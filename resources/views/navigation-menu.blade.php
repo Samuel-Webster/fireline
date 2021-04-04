@@ -15,6 +15,12 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+
+                    @unless(auth()->user()->currentTeam->personal_team)
+                    <x-jet-nav-link href="{{ route('appliances') }}" :active="request()->routeIs('appliances')">
+                        {{ __('Appliances') }}
+                    </x-jet-nav-link>
+                    @endunless
                 </div>
             </div>
 
