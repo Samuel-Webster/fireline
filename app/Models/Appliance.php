@@ -14,6 +14,8 @@ class Appliance extends Model
     const TYPES = [
         'light',
         'medium',
-        'heavy'
+        'heavy',
+        'support',
+        'control'
     ];
 }

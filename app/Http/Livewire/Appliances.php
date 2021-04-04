@@ -18,6 +18,8 @@ class Appliances extends Component
 
     public function create()
     {
+        $this->resetValidation();
+        
         $this->editing = Appliance::make([
             'team_id' => auth()->user()->currentTeam->id
         ]);
@@ -27,6 +29,8 @@ class Appliances extends Component
 
     public function edit(Appliance $appliance)
     {
+        $this->resetValidation();
+
         $this->editing = $appliance;
 
         $this->showEditModal = true;

@@ -7,19 +7,66 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <x-jet-button wire:click="create" wire:loading.attr="disabled">Create</x-jet-button>
+            <div class="flex items-center justify-end mb-2">
+                <x-jet-button wire:click="create" wire:loading.attr="disabled">Create</x-jet-button>
+            </div>
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                @forelse($appliances as $appliance)
-                <div>
-                    {{ $appliance->name }} - {{ $appliance->type }}
-                    <x-jet-secondary-button wire:click="edit({{ $appliance->id }})" wire:loading.attr="disabled">
-                        Edit
-                    </x-jet-secondary-button>
+                <div class="flex flex-col">
+                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Name
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Type
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                ODO
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Last Checked
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="sr-only">Edit</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($appliances as $appliance)
+                                        <tr class="bg-white">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            {{ $appliance->name }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                {{ Str::of($appliance->type)->title() }}
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                20,764 km
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                4 Days Ago
+                                                <div class="text-xs text-warm-gray-500">{{now()}}</div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                <x-jet-secondary-button wire:click="edit({{ $appliance->id }})" wire:loading.attr="disabled">
+                                                    Edit
+                                                </x-jet-secondary-button>
+                                            </td>
+                                        </tr>
+                                        @empty 
+                                        No Appliances
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                @empty 
-                No Appliances
-                @endforelse
             </div>
         </div>
     </div>
@@ -53,7 +100,7 @@
             </x-slot>
         
             <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$toggle('confirmingUserDeletion')" wire:loading.attr="disabled">
+                <x-jet-secondary-button wire:click="$toggle('showEditModal')" wire:loading.attr="disabled">
                     Cancel
                 </x-jet-secondary-button>
         
