@@ -12,7 +12,18 @@ class Appliances extends Component
 
     protected $rules = [
         'editing.name' => 'required|min:3',
+        'editing.type' => 'required',
+        'editing.team_id' => 'required',
     ];
+
+    public function create()
+    {
+        $this->editing = Appliance::make([
+            'team_id' => auth()->user()->currentTeam->id
+        ]);
+
+        $this->showEditModal = true;
+    }
 
     public function edit(Appliance $appliance)
     {

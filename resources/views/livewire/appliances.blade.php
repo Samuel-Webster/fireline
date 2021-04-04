@@ -7,6 +7,8 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <x-jet-button wire:click="create" wire:loading.attr="disabled">Create</x-jet-button>
+
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @forelse($appliances as $appliance)
                 <div>
@@ -30,8 +32,24 @@
             </x-slot>
         
             <x-slot name="content">
-                <x-jet-input type="text" wire:model="editing.name"/>
-                <x-jet-input-error for="editing.name"/>
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                    <div class="mt-1">
+                        <input type="text" name="name" wire:model="editing.name" id="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="TM51">
+                        <x-jet-input-error for="editing.name"/>
+                    </div>
+                  </div>
+
+                <div>
+                    <label for="type" class="block text-sm font-medium text-gray-700">Type</label>
+                        <select id="type" name="type" wire:model="editing.type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value=''>Please Select...</option>
+                            @foreach(App\Models\Appliance::TYPES as $type)
+                            <option value="{{ $type }}">{{ Str::of($type)->title() }}</option>
+                            @endforeach
+                        </select>
+                    <x-jet-input-error for="editing.type"/>
+                </div>
             </x-slot>
         
             <x-slot name="footer">
