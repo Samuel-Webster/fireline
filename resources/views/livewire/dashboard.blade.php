@@ -108,16 +108,16 @@
                 <div class="flex space-x-4 mb-4">
                     <div class="w-1/2">
                         <label for="time_out" class="block text-sm font-medium text-gray-700">Time Out</label>
-                        <div class="mt-1">
-                            <input type="datetime-local" name="time_out" wire:model="log.time_out" id="time_out" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        <div x-data="{time_out: @entangle('log.time_out')}" class="mt-1">
+                            <input type="datetime-local" name="time_out" wire:model="log.time_out" x-bind:value="moment.utc(time_out).local().format('YYYY-MM-DD[T]HH:mm')" x-on:change="time_out = moment($event.target.value).utc()" placeholder="yyyy/mm/dd hh:mm" id="time_out" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                             <x-jet-input-error for="log.time_out"/>
                         </div>
                     </div>
 
                     <div class="w-1/2">
                         <label for="time_in" class="block text-sm font-medium text-gray-700">Time In</label>
-                        <div class="mt-1">
-                            <input type="datetime-local" name="time_in" wire:model="log.time_in" id="time_in" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        <div x-data="{time_in: @entangle('log.time_in')}" class="mt-1">
+                            <input type="datetime-local" name="time_in" x-bind:value="moment.utc(time_in).local().format('YYYY-MM-DD[T]HH:mm')" x-on:change="time_in = moment($event.target.value).utc()" placeholder="yyyy/mm/dd hh:mm" id="time_in" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
                             <x-jet-input-error for="log.time_in"/>
                         </div>
                     </div>

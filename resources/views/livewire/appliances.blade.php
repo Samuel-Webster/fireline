@@ -54,8 +54,8 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 @if($appliance->lastLogTimeIn)
                                                 {{Carbon\Carbon::create($appliance->lastLogTimeIn)->diffForHumans() }}
-                                                <p x-data x-text="moment.utc('{{Carbon\Carbon::create($appliance->lastLogTimeIn)->toIso8601String()}}').local().format('Do MMM HH:mm')"
-                                                    class="text-xs text-gray-500"></p>
+                                                <div x-data x-text="moment.utc('{{Carbon\Carbon::create($appliance->lastLogTimeIn)->toIso8601String()}}').local().format('Do MMM HH:mm')"
+                                                    class="text-xs text-gray-500"></div>
                                                 @else
                                                 N/A
                                                 @endif
