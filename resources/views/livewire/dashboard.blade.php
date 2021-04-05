@@ -47,6 +47,26 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="space-y-4 p-4">
+                        @forelse($appliance->logs->sortByDesc('odometer_in') as $log)
+                        <div>
+                            <div>In: {{ $log->odometer_in }} km</div>
+                            <div>
+                                Crew: 
+                                @forelse($log->users as $user)
+                                <div>
+                                    {{ $user->name }} 
+                                    <span class="text-xs uppercase tracking-widest text-gray-500">@if($user->pivot->is_driver) Driver @elseif($user->pivot->is_crew_leader) Crew Leader @endif </span>
+                                </div>
+                                @empty 
+                                @endforelse
+                            </div>
+                        </div>
+                        @empty 
+                        @endforelse
+                    </div>
+
                     </li>
                     @empty 
                     No appliances found...

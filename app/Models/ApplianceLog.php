@@ -18,7 +18,7 @@ class ApplianceLog extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('is_crew_leader', 'is_driver');
     }
 
     public function appliance()
