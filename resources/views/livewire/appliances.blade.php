@@ -101,7 +101,7 @@
                         <input type="text" name="name" wire:model="editing.name" id="name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="TM51">
                         <x-jet-input-error for="editing.name"/>
                     </div>
-                  </div>
+                </div>
 
                 <div>
                     <label for="type" class="block text-sm font-medium text-gray-700">Type</label>

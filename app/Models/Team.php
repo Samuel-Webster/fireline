@@ -46,4 +46,9 @@ class Team extends JetstreamTeam
     {
         return $this->hasMany(Appliance::class);
     }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }
