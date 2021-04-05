@@ -29,6 +29,9 @@
                                                 ODO
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                Last Job
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 Last Checked
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
@@ -46,11 +49,20 @@
                                                 {{ Str::of($appliance->type)->title() }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                20,764 km
+                                                {{$appliance->currentOdometer}} km
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                @if($appliance->lastLogTimeIn)
+                                                {{Carbon\Carbon::create($appliance->lastLogTimeIn)->diffForHumans() }}
+                                                <p x-data x-text="moment.utc('{{Carbon\Carbon::create($appliance->lastLogTimeIn)->toIso8601String()}}').local().format('Do MMM HH:mm')"
+                                                    class="text-xs text-gray-500"></p>
+                                                @else
+                                                N/A
+                                                @endif
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 4 Days Ago
-                                                <div class="text-xs text-warm-gray-500">{{now()}}</div>
+                                                <div class="text-xs text-warm-gray-500">{{now()->format('jS M H:i')}}</div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <x-jet-secondary-button wire:click="edit({{ $appliance->id }})" wire:loading.attr="disabled">
