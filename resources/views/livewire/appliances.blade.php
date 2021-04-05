@@ -59,7 +59,11 @@
                                             </td>
                                         </tr>
                                         @empty 
-                                        No Appliances
+                                        <tr class="bg-white">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                                            None found. Create an appliance to get started.
+                                            </td>
+                                        </tr>
                                         @endforelse
                                     </tbody>
                                 </table>
@@ -72,7 +76,7 @@
     </div>
 
     {{-- Modals --}}
-    <form wire:submit.prevent="save">>
+    <form wire:submit.prevent="save">
         <x-jet-dialog-modal wire:model="showEditModal">
             <x-slot name="title">
                 Edit Appliance
@@ -97,6 +101,57 @@
                         </select>
                     <x-jet-input-error for="editing.type"/>
                 </div>
+
+                <div>
+                    <label for="make" class="block text-sm font-medium text-gray-700">Make</label>
+                        <select id="make" name="make" wire:model="editing.make" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value=''>Please Select...</option>
+                            @foreach(App\Models\Appliance::MAKES as $make)
+                            <option value="{{ $make }}">{{ Str::of($make)->title() }}</option>
+                            @endforeach
+                        </select>
+                    <x-jet-input-error for="editing.make"/>
+                </div>
+
+                <div>
+                    <label for="model" class="block text-sm font-medium text-gray-700">Model</label>
+                    <div class="mt-1">
+                        <input type="text" name="model" wire:model="editing.model" id="model" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="NPS 300">
+                        <x-jet-input-error for="editing.model"/>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="model" class="block text-sm font-medium text-gray-700">Model</label>
+                    <div class="mt-1">
+                        <input type="text" name="model" wire:model="editing.model" id="model" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="NPS 300">
+                        <x-jet-input-error for="editing.model"/>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="seats" class="block text-sm font-medium text-gray-700">Seats</label>
+                    <div class="mt-1">
+                        <input type="number" name="seats" wire:model="editing.seats" id="seats" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="3">
+                        <x-jet-input-error for="editing.seats"/>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="vin" class="block text-sm font-medium text-gray-700">VIN</label>
+                    <div class="mt-1">
+                        <input type="text" name="vin" wire:model="editing.vin" id="vin" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="1HGBH41JXMN109186">
+                        <x-jet-input-error for="editing.vin"/>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="fleet_number" class="block text-sm font-medium text-gray-700">Fleet #</label>
+                    <div class="mt-1">
+                        <input type="text" name="fleet_number" wire:model="editing.fleet_number" id="fleet_number" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="RF5304">
+                        <x-jet-input-error for="editing.fleet_number"/>
+                    </div>
+                  </div>
             </x-slot>
         
             <x-slot name="footer">

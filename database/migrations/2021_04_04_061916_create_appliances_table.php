@@ -18,6 +18,12 @@ class CreateAppliancesTable extends Migration
             $table->foreignId('team_id')->index();
             $table->string('name');
             $table->string('type');
+            $table->string('make');
+            $table->string('model');
+            $table->integer('seats');
+            $table->date('year');
+            $table->string('VIN')->unique();
+            $table->string('fleet_number')->unique();
             $table->timestamps();
         });
     }

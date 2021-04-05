@@ -11,6 +11,10 @@ class Appliance extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'year' => 'date:Y-m-d',
+    ];
+
     const TYPES = [
         'light',
         'medium',
@@ -18,4 +22,20 @@ class Appliance extends Model
         'support',
         'control'
     ];
+
+    const MAKES = [
+        'Isuzu',
+        'Hino',
+        'Ford',
+        'Nissan',
+        'Toyota',
+        'Iveco',
+        'Man',
+        'Scania',
+    ];
+
+    public function logs()
+    {
+        return $this->hasMany(ApplianceLog::class);
+    }
 }

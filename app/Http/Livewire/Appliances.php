@@ -13,6 +13,12 @@ class Appliances extends Component
     protected $rules = [
         'editing.name' => 'required|min:3',
         'editing.type' => 'required',
+        'editing.make' => 'required',
+        'editing.model' => 'required',
+        'editing.seats' => 'required',
+        'editing.year' => 'required',
+        'editing.vin' => 'required',
+        'editing.fleet_number' => 'required',
         'editing.team_id' => 'required',
     ];
 
