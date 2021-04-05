@@ -172,7 +172,25 @@
                             <div class="flex justify-start lg:w-0 lg:flex-1">
                                 <a href="#">
                                 <span class="sr-only">Workflow</span>
-                                <img class="h-8 w-auto sm:h-10" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="">
+                                <svg class="h-8 w-auto sm:h-10 text-warm-gray-700" stroke="currentColor" fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M14.1,445.8v-59.7h47.4v16.6H33.3v9h21.3v15.4H33.3v18.8H14.1z"/>
+                                            <path d="M78.9,445.8v-59.7h19.2v59.7H78.9z"/>
+                                            <path d="M119.5,445.8v-59.7h29.4c6.5,0,11.9,2,16.2,6.1c4.3,4.1,6.4,9.2,6.4,15.2c0,5.1-1.6,9.4-4.7,13.1c-1.4,1.6-3,2.9-4.7,3.9
+                                                l11.5,21.3h-20.1l-8.5-17.1h-6.4v17.1H119.5z M138.7,412.6h8.1c1.7,0,3.1-0.5,4.1-1.4c1-0.9,1.5-2.2,1.5-3.7
+                                                c0-1.5-0.5-2.8-1.5-3.7c-1-0.9-2.3-1.4-4.1-1.4h-8.1V412.6z"/>
+                                            <path d="M190.3,445.8v-59.7h47.4v15.8h-28.2v7.3h21.3v13.7h-21.3v7.3h29v15.8H190.3z"/>
+                                            <path d="M256.8,445.8v-59.7h19.2v41.8h24.7v17.9H256.8z"/>
+                                            <path d="M317.4,445.8v-59.7h19.2v59.7H317.4z"/>
+                                            <path d="M358,445.8v-59.7h16.6l22.2,28.6v-28.6H416v59.7h-16.6l-22.2-28.6v28.6H358z"/>
+                                            <path d="M437.3,445.8v-59.7h47.4v15.8h-28.2v7.3h21.3v13.7h-21.3v7.3h29v15.8H437.3z"/>
+                                        </g>
+                                        <polyline points="258,362.3 484.9,362.3 484.9,269.8 357.1,269.8 357.1,54 258,54 258,54 13.6,54 13.6,362.3 112.7,362.3 
+                                            112.7,265.4 211.9,265.4 211.9,186.1 112.7,186.1 112.7,139.9 258,139.9 	"/>
+                                    </g>
+                                </svg>
                                 </a>
                             </div>
 
@@ -223,7 +241,25 @@
                             <div class="pt-5 pb-6 px-5">
                             <div class="flex items-center justify-between">
                                 <div>
-                                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-orange-600.svg" alt="Workflow">
+                                    <svg class="h-8 w-auto sm:h-10 text-warm-gray-700" stroke="currentColor" fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M14.1,445.8v-59.7h47.4v16.6H33.3v9h21.3v15.4H33.3v18.8H14.1z"/>
+                                            <path d="M78.9,445.8v-59.7h19.2v59.7H78.9z"/>
+                                            <path d="M119.5,445.8v-59.7h29.4c6.5,0,11.9,2,16.2,6.1c4.3,4.1,6.4,9.2,6.4,15.2c0,5.1-1.6,9.4-4.7,13.1c-1.4,1.6-3,2.9-4.7,3.9
+                                                l11.5,21.3h-20.1l-8.5-17.1h-6.4v17.1H119.5z M138.7,412.6h8.1c1.7,0,3.1-0.5,4.1-1.4c1-0.9,1.5-2.2,1.5-3.7
+                                                c0-1.5-0.5-2.8-1.5-3.7c-1-0.9-2.3-1.4-4.1-1.4h-8.1V412.6z"/>
+                                            <path d="M190.3,445.8v-59.7h47.4v15.8h-28.2v7.3h21.3v13.7h-21.3v7.3h29v15.8H190.3z"/>
+                                            <path d="M256.8,445.8v-59.7h19.2v41.8h24.7v17.9H256.8z"/>
+                                            <path d="M317.4,445.8v-59.7h19.2v59.7H317.4z"/>
+                                            <path d="M358,445.8v-59.7h16.6l22.2,28.6v-28.6H416v59.7h-16.6l-22.2-28.6v28.6H358z"/>
+                                            <path d="M437.3,445.8v-59.7h47.4v15.8h-28.2v7.3h21.3v13.7h-21.3v7.3h29v15.8H437.3z"/>
+                                        </g>
+                                        <polyline points="258,362.3 484.9,362.3 484.9,269.8 357.1,269.8 357.1,54 258,54 258,54 13.6,54 13.6,362.3 112.7,362.3 
+                                            112.7,265.4 211.9,265.4 211.9,186.1 112.7,186.1 112.7,139.9 258,139.9 	"/>
+                                    </g>
+                                </svg>
                                 </div>
                                 <div class="-mr-2">
                                 <button type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500" @click="toggle">
@@ -302,22 +338,22 @@
                 </div>
             
                 {{-- Content --}}
-                <main class="lg:relative bg-warm-gray-900 text-warm-gray-100">
+                <main class="lg:relative bg-warm-gray-700 text-warm-gray-100">
                     <div class="mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left">
                         <div class="px-4 lg:w-1/2 sm:px-8 xl:pr-16">
                             <h1 class="text-4xl tracking-tight font-extrabold text-warm-gray-100 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl">
-                                <span class="block xl:inline">Fight fires</span>
+                                <span class="block xl:inline">Simplify your appliance</span>
                                 <!-- space -->
-                                <span class="block text-orange-600 xl:inline">not paperwork</span>
+                                <span class="block text-orange-500 xl:inline">logs and checks.</span>
                             </h1>
 
                             <p class="mt-3 max-w-md mx-auto text-lg text-warm-gray-400 sm:text-xl md:mt-5 md:max-w-3xl">
-                                Spend time fighting fire and training, not filing cabinets.
+                                Tablet based appliance management.
                             </p>
                             
                             <div class="mt-10 sm:flex sm:justify-center lg:justify-start">
                                 <div class="rounded-md shadow">
-                                    <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10">
+                                    <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-warm-gray-100 bg-orange-600 hover:bg-orange-700 md:py-4 md:text-lg md:px-10">
                                         Get started
                                     </a>
                                 </div>

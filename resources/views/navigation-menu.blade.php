@@ -6,7 +6,26 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
+                        <svg class="h-8 w-auto sm:h-10 text-warm-gray-700" stroke="currentColor" fill="currentColor" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                    viewBox="0 0 500 500" xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path d="M14.1,445.8v-59.7h47.4v16.6H33.3v9h21.3v15.4H33.3v18.8H14.1z"/>
+                                            <path d="M78.9,445.8v-59.7h19.2v59.7H78.9z"/>
+                                            <path d="M119.5,445.8v-59.7h29.4c6.5,0,11.9,2,16.2,6.1c4.3,4.1,6.4,9.2,6.4,15.2c0,5.1-1.6,9.4-4.7,13.1c-1.4,1.6-3,2.9-4.7,3.9
+                                                l11.5,21.3h-20.1l-8.5-17.1h-6.4v17.1H119.5z M138.7,412.6h8.1c1.7,0,3.1-0.5,4.1-1.4c1-0.9,1.5-2.2,1.5-3.7
+                                                c0-1.5-0.5-2.8-1.5-3.7c-1-0.9-2.3-1.4-4.1-1.4h-8.1V412.6z"/>
+                                            <path d="M190.3,445.8v-59.7h47.4v15.8h-28.2v7.3h21.3v13.7h-21.3v7.3h29v15.8H190.3z"/>
+                                            <path d="M256.8,445.8v-59.7h19.2v41.8h24.7v17.9H256.8z"/>
+                                            <path d="M317.4,445.8v-59.7h19.2v59.7H317.4z"/>
+                                            <path d="M358,445.8v-59.7h16.6l22.2,28.6v-28.6H416v59.7h-16.6l-22.2-28.6v28.6H358z"/>
+                                            <path d="M437.3,445.8v-59.7h47.4v15.8h-28.2v7.3h21.3v13.7h-21.3v7.3h29v15.8H437.3z"/>
+                                        </g>
+                                        <polyline points="258,362.3 484.9,362.3 484.9,269.8 357.1,269.8 357.1,54 258,54 258,54 13.6,54 13.6,362.3 112.7,362.3 
+                                            112.7,265.4 211.9,265.4 211.9,186.1 112.7,186.1 112.7,139.9 258,139.9 	"/>
+                                    </g>
+                                </svg>
                     </a>
                 </div>
 
