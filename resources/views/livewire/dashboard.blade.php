@@ -165,7 +165,17 @@
         
             <x-slot name="content">
                 <div class="flex space-x-4 mb-4">
-                    <div class="w-1/2">
+                    <div class="w-1/3">
+                        <label for="existing-job" class="block text-sm font-medium text-gray-700">Attach to Existing Job?</label>
+                        <select id="existing-job" name="existing-job" wire:model="existingJob" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                            <option value=''>Please Select...</option>
+                            @foreach(auth()->user()->currentTeam->jobs as $job)
+                            <option value="{{ $job->id }}">{{ $job->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="w-1/3">
                         <label for="job-name" class="block text-sm font-medium text-gray-700">Job Name</label>
                         <div class="mt-1">
                             <input type="text" name="job-name" wire:model="job.name" id="job-name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md" placeholder="e.g. Training or House Fire Long Road">
@@ -173,7 +183,7 @@
                         </div>
                     </div>
 
-                    <div class="w-1/2">
+                    <div class="w-1/3">
                         <label for="job-type" class="block text-sm font-medium text-gray-700">Type</label>
                             <select id="job-type" name="job-type" wire:model="job.type" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                                 <option value=''>Please Select...</option>

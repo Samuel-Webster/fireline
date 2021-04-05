@@ -14,6 +14,7 @@ class Dashboard extends Component
     public ApplianceLog $log;
     public Job $job;
     public $attachedUsers;
+    public $existingJob;
 
     protected $rules = [
         'log.odometer_out' => 'required|numeric',
@@ -32,9 +33,18 @@ class Dashboard extends Component
         'job.comments' => 'required',
     ];
 
+    public function updatedExistingJob($value)
+    {
+        $job = Job::find($value);
+
+        if($job) $this->job = $job;
+    }
+
     public function createLog(Appliance $appliance)
     {
         $this->resetValidation();
+
+        $this->existingJob = null;
 
         $this->selectedAppliance = $appliance;
 
