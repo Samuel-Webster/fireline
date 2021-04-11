@@ -15,8 +15,8 @@ class CreateApplianceLogUserTable extends Migration
     {
         Schema::create('appliance_log_user', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appliance_log_id');
-            $table->foreignId('user_id');
+            $table->foreignId('appliance_log_id')->contrained()->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->contrained()->onUpdate('cascade')->onUpdate('cascade');
             $table->boolean('is_driver');
             $table->boolean('is_crew_leader');
             $table->timestamps();

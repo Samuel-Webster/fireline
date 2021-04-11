@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApplianceLogsTable extends Migration
+class CreateApplianceChecklistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateApplianceLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('appliance_logs', function (Blueprint $table) {
+        Schema::create('appliance_checklists', function (Blueprint $table) {
             $table->id();
             $table->foreignId('appliance_id')->contrained()->onUpdate('cascade')->onUpdate('cascade');
-            $table->foreignId('user_id')->contrained()->onUpdate('cascade')->onUpdate('cascade');
-            $table->integer('odometer_out');
-            $table->integer('odometer_in');
-            $table->dateTime('time_out');
-            $table->dateTime('time_in');
+            $table->string('item');
+            $table->integer('quantity');
+            $table->string('location');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ class CreateApplianceLogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appliance_logs');
+        Schema::dropIfExists('appliance_checklists');
     }
 }

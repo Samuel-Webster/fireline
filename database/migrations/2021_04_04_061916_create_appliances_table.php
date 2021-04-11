@@ -15,7 +15,7 @@ class CreateAppliancesTable extends Migration
     {
         Schema::create('appliances', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->index();
+            $table->foreignId('team_id')->index()->contrained()->onUpdate('cascade')->onUpdate('cascade');
             $table->string('name');
             $table->string('type');
             $table->string('make');

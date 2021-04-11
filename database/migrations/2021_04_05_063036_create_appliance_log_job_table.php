@@ -15,8 +15,8 @@ class CreateApplianceLogJobTable extends Migration
     {
         Schema::create('appliance_log_job', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appliance_log_id');
-            $table->foreignId('job_id');
+            $table->foreignId('appliance_log_id')->contrained()->onUpdate('cascade')->onUpdate('cascade');
+            $table->foreignId('job_id')->contrained()->onUpdate('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
