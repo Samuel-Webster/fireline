@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Appliance;
 use App\Models\ApplianceLog;
+use App\Models\ApplianceChecklistLog;
 use App\Models\Job;
 use Livewire\Component;
 
@@ -15,6 +16,11 @@ class Dashboard extends Component
     public Job $job;
     public $attachedUsers;
     public $existingJob;
+    
+    // Checklist
+    public $showChecklistModal = false;
+    public ApplianceChecklistLog $checklist;
+    public $checklistItems;
 
     protected $rules = [
         'log.odometer_out' => 'required|numeric',
@@ -31,6 +37,9 @@ class Dashboard extends Component
         'job.area_burnt' => 'required',
         'job.action_taken' => 'required',
         'job.comments' => 'required',
+        'checklist.user_id' => 'required',
+        'checklist.appliance_id' => 'required',
+        'checklistItems.*.completed' => 'sometimes',
     ];
 
     public function updatedExistingJob($value)
@@ -81,6 +90,42 @@ class Dashboard extends Component
         });
 
         $this->showLogModal = false;
+    }
+
+    public function createChecklist(Appliance $appliance)
+    {
+        $this->resetValidation();
+
+        $this->selectedAppliance = $appliance;
+
+        $this->checklistItems = $this->selectedAppliance->checklist->sortBy('location')->map(function($item) {
+            $item->completed = false;
+            return $item;
+        });
+
+        $this->checklist = ApplianceChecklistLog::make([
+            'user_id' => auth()->user()->id,
+            'appliance_id' => $appliance->id
+        ]);
+
+        $this->showChecklistModal = true;
+    }
+
+    public function saveChecklist()
+    {
+        $this->checklist->checklist = $this->checklistItems->map(function($item) {
+            $item = [
+                'item' => $item->item, 
+                'quantity' => $item->quantity,
+                'location' => $item->location,
+                'completed' => $item->completed,
+            ];
+            return $item;
+        });
+
+        $this->checklist->save();
+
+        $this->showChecklistModal = false;
     }
 
     public function render()

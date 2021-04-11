@@ -28,7 +28,7 @@
                     <div>
                         <div class="-mt-px flex divide-x divide-gray-200">
                             <div class="w-0 flex-1 flex">
-                                <button class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 hover:bg-gray-200">
+                                <button wire:click="createChecklist('{{ $appliance->id }}')"  class="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500 hover:bg-gray-200">
                                     <svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
                                     </svg>
@@ -157,7 +157,7 @@
 
     {{-- Modals --}}
     <form wire:submit.prevent="saveLog">
-        @if($selectedAppliance)
+        @if($selectedAppliance && $showLogModal)
         <x-jet-dialog-modal wire:model="showLogModal">
             <x-slot name="title">
                 {{ $selectedAppliance->name }} Log
@@ -292,6 +292,84 @@
         
             <x-slot name="footer">
                 <x-jet-secondary-button wire:click="$toggle('showLogModal')" wire:loading.attr="disabled">
+                    Cancel
+                </x-jet-secondary-button>
+        
+                <x-jet-button class="ml-2" wire:loading.attr="disabled">
+                    Save
+                </x-jet-button>
+            </x-slot>
+        </x-jet-dialog-modal>
+        @endif
+    </form>
+
+    <form wire:submit.prevent="saveChecklist">
+        @if($selectedAppliance && $showChecklistModal)
+        <x-jet-dialog-modal wire:model="showChecklistModal">
+            <x-slot name="title">
+                {{ $selectedAppliance->name }} Checklist
+            </x-slot>
+        
+            <x-slot name="content">
+                <div class="flex text-center w-full justify-between items-center font-medium border border-b-0 divide-x rounded-t-md bg-warm-gray-100">
+                    <div class="p-1 w-2/6">
+                        Item
+                    </div>
+
+                    <div class="p-1 w-1/6">
+                        Quantity
+                    </div>
+
+                    <div class="p-1 w-2/6">
+                        Location
+                    </div>
+
+                    <div class="p-1 w-1/6">
+                        Checked
+                    </div>
+                </div>
+
+                <div class="border divide-y rounded-b-md bg-warm-gray-50">
+                    @forelse($checklistItems as $key => $item)
+                    <div class="flex w-full justify-between items-center divide-x">
+                        <div class="p-1 w-2/6">
+                            {{$item->item}}
+                        </div>
+
+                        <div class="p-1 w-1/6 text-center">
+                            {{$item->quantity}}
+                        </div>
+
+                        <div class="p-1 w-2/6">
+                            {{Str::of($item->location)->title()}}
+                        </div>
+
+                        <div class="p-1 w-1/6 text-center">
+                            <button type="button" class="relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 bg-gray-200" x-data="{ on: @entangle('checklistItems.'.$key.'.completed') }" aria-pressed="false" :aria-pressed="on.toString()" @click="on = !on" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'bg-indigo-600': on, 'bg-gray-200': !(on) }">
+                                <span class="sr-only">Use setting</span>
+                                <span class="pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 translate-x-0" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'translate-x-5': on, 'translate-x-0': !(on) }">
+                                <span class="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity opacity-100 ease-in duration-200" aria-hidden="true" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'opacity-0 ease-out duration-100': on, 'opacity-100 ease-in duration-200': !(on) }">
+                                    <svg class="bg-white h-3 w-3 text-gray-400" fill="none" viewBox="0 0 12 12">
+                                    <path d="M4 8l2-2m0 0l2-2M6 6L4 4m2 2l2 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                                <span class="absolute inset-0 h-full w-full flex items-center justify-center transition-opacity opacity-0 ease-out duration-100" aria-hidden="true" x-state:on="Enabled" x-state:off="Not Enabled" :class="{ 'opacity-100 ease-in duration-200': on, 'opacity-0 ease-out duration-100': !(on) }">
+                                    <svg class="bg-white h-3 w-3 text-indigo-600" fill="currentColor" viewBox="0 0 12 12">
+                                    <path d="M3.707 5.293a1 1 0 00-1.414 1.414l1.414-1.414zM5 8l-.707.707a1 1 0 001.414 0L5 8zm4.707-3.293a1 1 0 00-1.414-1.414l1.414 1.414zm-7.414 2l2 2 1.414-1.414-2-2-1.414 1.414zm3.414 2l4-4-1.414-1.414-4 4 1.414 1.414z"></path>
+                                    </svg>
+                                </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    @empty
+                    No checklist for this appliance.
+                    @endforelse
+                </div>
+            </x-slot>
+        
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$toggle('showChecklistModal')" wire:loading.attr="disabled">
                     Cancel
                 </x-jet-secondary-button>
         
