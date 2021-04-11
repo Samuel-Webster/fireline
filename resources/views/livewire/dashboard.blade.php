@@ -71,8 +71,8 @@
                         <label for="existing-job" class="block text-sm font-medium text-gray-700">Attach to Existing Job?</label>
                         <select id="existing-job" name="existing-job" wire:model="existingJob" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option value=''>Please Select...</option>
-                            @foreach(auth()->user()->currentTeam->jobs as $job)
-                            <option value="{{ $job->id }}">{{ $job->name }}</option>
+                            @foreach(auth()->user()->currentTeam->jobs->sortByDesc('created_at') as $job)
+                            <option value="{{ $job->id }}">{{ $job->name }} - {{ $job->created_at->diffForHumans() }}</option>
                             @endforeach
                         </select>
                     </div>

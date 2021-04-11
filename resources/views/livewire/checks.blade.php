@@ -33,7 +33,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse($appliance->checklistLogs as $log)
+                                        @forelse($appliance->checklistLogs->sortByDesc('created_at') as $log)
                                         <tr class="bg-white">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                                 {{ $log->user->name }}

@@ -13,11 +13,11 @@
                     <li>
                         <div class="px-4 py-4 sm:px-6">
                             <div class="flex items-center justify-between">
-                                <p class="text-sm font-medium text-indigo-600 truncate">
+                                <p class="text-xl font-medium text-orange-500 truncate">
                                     {{$job->name}}
                                 </p>
                                 <div class="ml-2 flex-shrink-0 flex">
-                                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    <p class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800">
                                         {{$job->type}}
                                     </p>
                                 </div>
@@ -64,16 +64,12 @@
                         <div class="text-left bg-warm-gray-200 flex justify-between divide-x divide-warm-gray-300">
                             @forelse($job->applianceLogs as $log)
                             <div class="p-4 flex-1">
-                                <div class="text-warm-gray-700 pb-2">{{ $log->appliance->name }}</div>
-
-                                <div class="text-warm-gray-700 pb-2 text-xs">In: {{ $log->time_in->format('H:i') }}</div>
-                                <div class="text-warm-gray-700 pb-2 text-xs">Out: {{ $log->time_out->format('H:i') }}</div>
-                                <div class="text-warm-gray-700 pb-2 text-xs">Duration: {{ $log->time_out->diffInHours($log->time_in) }} hr</div>
-
+                                <div class="text-warm-gray-700">{{ $log->appliance->name }}</div>
+                                <div class="text-warm-gray-700 text-xs pb-2">Out for {{ round($log->time_out->floatDiffInHours($log->time_in), 1) }} hr</div>
                                 <div class="space-y-2">
                                     @forelse($log->users as $user)
                                     <div class="text-warm-gray-500">
-                                        <div class="text-xs uppercase tracking-widest text-gray-500">@if($user->pivot->is_driver) Driver @elseif($user->pivot->is_crew_leader) Crew Leader @endif </div>
+                                        <div class="text-xs uppercase tracking-widest text-gray-500">@if($user->pivot->is_driver) Driver @elseif($user->pivot->is_crew_leader) Crew Leader @else Crew Member @endif </div>
                                         <div class="text-sm">{{ $user->name }}</div>
                                     </div>
                                     @empty 
@@ -85,7 +81,21 @@
                         </div>
                     </li>
                     @empty
-                    No jobs yet..
+                    <div class="rounded-md bg-blue-50 p-4">
+                        <div class="flex">
+                          <div class="flex-shrink-0">
+                            <!-- Heroicon name: solid/information-circle -->
+                            <svg class="h-5 w-5 text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+                            </svg>
+                          </div>
+                          <div class="ml-3 flex-1 md:flex md:justify-between">
+                            <p class="text-sm text-blue-700">
+                              No jobs yet, log one to get started!
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     @endforelse
                 </ul>
             </div>

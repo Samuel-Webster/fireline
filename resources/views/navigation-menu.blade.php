@@ -35,7 +35,7 @@
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
 
-                    @unless(auth()->user()->currentTeam->personal_team)
+                    @if(!auth()->user()->currentTeam->personal_team && auth()->user()->hasTeamRole(auth()->user()->currentTeam, 'admin'))
                     <x-jet-nav-link href="{{ route('appliances') }}" :active="request()->routeIs('appliances')">
                         {{ __('Appliances') }}
                     </x-jet-nav-link>
@@ -51,7 +51,7 @@
                     <x-jet-nav-link href="{{ route('checks') }}" :active="request()->routeIs('checks')">
                         {{ __('Checks') }}
                     </x-jet-nav-link>
-                    @endunless
+                    @endif
                 </div>
             </div>
 
@@ -179,7 +179,7 @@
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
 
-            @unless(auth()->user()->currentTeam->personal_team)
+            @if(!auth()->user()->currentTeam->personal_team && auth()->user()->hasTeamRole(auth()->user()->currentTeam, 'admin'))
             <x-jet-responsive-nav-link href="{{ route('appliances') }}" :active="request()->routeIs('appliances')">
                 {{ __('Appliances') }}
             </x-jet-responsive-nav-link>
@@ -195,7 +195,7 @@
             <x-jet-responsive-nav-link href="{{ route('checks') }}" :active="request()->routeIs('checks')">
                 {{ __('Checks') }}
             </x-jet-responsive-nav-link>
-            @endunless
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

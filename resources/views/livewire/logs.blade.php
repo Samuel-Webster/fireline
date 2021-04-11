@@ -42,10 +42,10 @@
                                                 {{ $log->user->name }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $log->odometer_out }} km
+                                                {{ number_format($log->odometer_out) }} km
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                {{ $log->odometer_in }} km
+                                                {{ number_format($log->odometer_in) }} km
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 {{ $log->time_out->diffForHumans() }}
@@ -61,7 +61,7 @@
                                         @empty 
                                         <tr class="bg-white">
                                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            None found. Create an appliance to get started.
+                                            None found. Complete a log to get started.
                                             </td>
                                         </tr>
                                         @endforelse

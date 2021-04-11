@@ -8,7 +8,7 @@ class Jobs extends Component
 {
     public function getJobsProperty()
     {
-        return auth()->user()->currentTeam->jobs;
+        return auth()->user()->currentTeam->jobs->sortByDesc('created_at');
     }
 
     public function render()
