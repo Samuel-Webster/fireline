@@ -20,4 +20,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('/dashboard', App\Http\Livewire\Dashboard::class)->name('dashboard');
     Route::get('/appliances', App\Http\Livewire\Appliances::class)->name('appliances');
+    Route::get('/jobs', App\Http\Livewire\Jobs::class)->name('jobs');
+    Route::get('/logs', App\Http\Livewire\Logs::class)->name('logs');
+    Route::get('/checks', App\Http\Livewire\Checks::class)->name('checks');
 });

@@ -53,16 +53,21 @@
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                 @if($appliance->lastLogTimeIn)
-                                                {{Carbon\Carbon::create($appliance->lastLogTimeIn)->diffForHumans() }}
-                                                <div x-data x-text="moment.utc('{{Carbon\Carbon::create($appliance->lastLogTimeIn)->toIso8601String()}}').local().format('Do MMM HH:mm')"
+                                                {{ $appliance->lastLogTimeIn->diffForHumans() }}
+                                                <div x-data x-text="moment.utc('{{ $appliance->lastLogTimeIn->toIso8601String()}}').local().format('Do MMM HH:mm')"
                                                     class="text-xs text-gray-500"></div>
                                                 @else
                                                 N/A
                                                 @endif
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                4 Days Ago
-                                                <div class="text-xs text-warm-gray-500">{{now()->format('jS M H:i')}}</div>
+                                                @if($appliance->lastChecked)
+                                                {{ $appliance->lastChecked->diffForHumans() }}
+                                                <div x-data x-text="moment.utc('{{ $appliance->lastChecked->toIso8601String()}}').local().format('Do MMM HH:mm')"
+                                                    class="text-xs text-gray-500"></div>
+                                                @else
+                                                N/A
+                                                @endif
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <x-jet-secondary-button wire:click="edit({{ $appliance->id }})" wire:loading.attr="disabled">

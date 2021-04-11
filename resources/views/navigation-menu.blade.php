@@ -39,6 +39,18 @@
                     <x-jet-nav-link href="{{ route('appliances') }}" :active="request()->routeIs('appliances')">
                         {{ __('Appliances') }}
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('jobs') }}" :active="request()->routeIs('jobs')">
+                        {{ __('Jobs') }}
+                    </x-jet-nav-link>
+        
+                    <x-jet-nav-link href="{{ route('logs') }}" :active="request()->routeIs('logs')">
+                        {{ __('Logs') }}
+                    </x-jet-nav-link>
+        
+                    <x-jet-nav-link href="{{ route('checks') }}" :active="request()->routeIs('checks')">
+                        {{ __('Checks') }}
+                    </x-jet-nav-link>
                     @endunless
                 </div>
             </div>
@@ -166,6 +178,24 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+
+            @unless(auth()->user()->currentTeam->personal_team)
+            <x-jet-responsive-nav-link href="{{ route('appliances') }}" :active="request()->routeIs('appliances')">
+                {{ __('Appliances') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('jobs') }}" :active="request()->routeIs('jobs')">
+                {{ __('Jobs') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('logs') }}" :active="request()->routeIs('logs')">
+                {{ __('Logs') }}
+            </x-jet-responsive-nav-link>
+
+            <x-jet-responsive-nav-link href="{{ route('checks') }}" :active="request()->routeIs('checks')">
+                {{ __('Checks') }}
+            </x-jet-responsive-nav-link>
+            @endunless
         </div>
 
         <!-- Responsive Settings Options -->

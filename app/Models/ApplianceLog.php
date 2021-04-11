@@ -11,6 +11,11 @@ class ApplianceLog extends Model
 
     protected $guarded = [];
 
+    public $dates = [
+        'time_in',
+        'time_out',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

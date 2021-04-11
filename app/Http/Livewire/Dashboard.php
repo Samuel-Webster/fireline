@@ -37,8 +37,8 @@ class Dashboard extends Component
         'job.area_burnt' => 'required',
         'job.action_taken' => 'required',
         'job.comments' => 'required',
-        'checklist.user_id' => 'required',
-        'checklist.appliance_id' => 'required',
+        'checklist.user_id' => 'sometimes',
+        'checklist.appliance_id' => 'sometimes',
         'checklistItems.*.completed' => 'sometimes',
     ];
 
